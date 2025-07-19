@@ -28,7 +28,7 @@ import { ref, onMounted } from 'vue'
 import type { Project } from '~/types/projects'
 
 useHead({
-  title:"My Projects",
+  title:"My Projects"
 })
 
 const projects = ref<Project[]>([])
