@@ -1,0 +1,42 @@
+[
+  {
+    "title": "Cadillacs and Dinosaurs",
+    "description": "\"Cadillacs and Dinosaurs\" is a classic side-scrolling beat 'em up arcade game. Set in a post-apocalyptic world, players choose from four characters, each with unique abilities, to fight through hordes of enemies, including dinosaurs. The game combines elements of hand-to-hand combat, firearms, and vehicular segments where players can drive Cadillacs to navigate the dangerous landscapes. Known for its engaging gameplay, vibrant graphics, and cooperative multiplayer feature, \"Cadillacs and Dinosaurs\" remains a nostalgic favourite among fans of arcade gaming. This game is implemented in C++ using the SFML (Simple and Fast Multimedia Library) library.",
+    "technologies": ["Cpp"],
+    "image": "https://play-lh.googleusercontent.com/aM5Pc5NSN9A3y-2QhHk7L2qMeiHGDzXa57CewUXJbolc-DHa6hJBYr0ANEdGmAsxqCQ",
+    "repositoryLink": "https://github.com/San2021331091/Cadillacs-and-Dinosaurs-Game",
+    "demoLink": "https://github.com/San2021331091/Cadillacs-and-Dinosaurs-Game"
+  },
+  {
+    "title": "Smart Cart",
+    "description": "Smart Cart is an innovative e-commerce platform designed to modernize the shopping experience by integrating real-time location tracking, voice-controlled inputs, smart navigation, and a clean, user-friendly interface. The project combines multiple technologies such as Python for backend processing, TypeScript for frontend interactivity, Kotlin for mobile applications, Go for high-performance services, and C# and PHP for various system components. This multi-language approach ensures flexibility and scalability for a comprehensive smart shopping ecosystem.",
+    "technologies": ["Python", "TypeScript", "Kotlin", "Go", "C#", "Php"],
+    "image": "https://i.ibb.co/mCgH4gm9/shoper-sl-Lo94w-ES2-M-unsplash.jpg",
+    "repositoryLink": "https://github.com/San2021331091/Smart-Cart",
+    "demoLink": "https://www.upload-apk.com/en/xWSp79MUdpt4Bnt"
+  },
+  {
+    "title": "Restaurant Management System",
+    "description": "A fully responsive restaurant management system that facilitates online menu browsing, table booking, order tracking, and staff management. Built using core web technologies like HTML, CSS, and JavaScript, it aims to simplify restaurant operations while providing customers with a seamless user experience across devices.",
+    "technologies": ["Html", "Css", "Javascript"],
+    "image": "https://images.unsplash.com/photo-1600891964599-f61ba0e24092",
+    "repositoryLink": "https://github.com/Davoidsj/My-Restaurant-Project",
+    "demoLink": "https://davoidsj.github.io/My-Restaurant-Project/"
+  },
+  {
+    "title": "Blog Project",
+    "description": "A clean and responsive blogging platform project that allows users to publish, edit, and manage articles easily. It focuses on delivering a great reading experience across devices, implementing best practices for accessibility, SEO, and responsive design using HTML, CSS, and JavaScript.",
+    "technologies": ["Html", "Css", "Javascript"],
+    "image": "https://i.ibb.co/JwhyhhRR/andrew-neel-cckf4-Ts-HAuw-unsplash.jpg",
+    "repositoryLink": "https://github.com/Davoidsj/My-Blog-Project",
+    "demoLink": "https://davoidsj.github.io/My-Blog-Project/"
+  },
+  {
+    "title": "Image Slider Project",
+    "description": "A responsive and customizable image slider project designed to showcase photos or content in an elegant carousel format. Developed with HTML, CSS, and JavaScript, it supports smooth transitions, navigation controls, and responsive design for optimal display on all screen sizes.",
+    "technologies": ["Html", "Css", "Javascript"],
+    "image": "https://i.ibb.co/KzpCyMJt/v2osk-1-Z2nii-BPg5-A-unsplash.jpg",
+    "repositoryLink": "https://github.com/Davoidsj/Image-Slider",
+    "demoLink": "https://aquamarine-boba-4ca83e.netlify.app/"
+  }
+]

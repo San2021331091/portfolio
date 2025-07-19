@@ -1,0 +1,51 @@
+[
+  {
+    "title": "Building a Cross-Platform App with React Native",
+    "excerpt": "Explore how to build performant mobile apps using React Native and the Expo ecosystem.",
+    "date": "2025-07-15",
+    "readTime": "5 min",
+    "slug": "react-native-cross-platform-app"
+  },
+  {
+    "title": "Crafting Desktop UIs with JavaFX",
+    "excerpt": "Learn how JavaFX can be used to create elegant and interactive desktop applications with ease.",
+    "date": "2025-07-12",
+    "readTime": "6 min",
+    "slug": "desktop-ui-javafx"
+  },
+  {
+    "title": "Capacitor + Vue: Bridging Web and Native Apps",
+    "excerpt": "An introduction to building hybrid mobile apps with Capacitor and Vue 3, and deploying to Android/iOS.",
+    "date": "2025-07-10",
+    "readTime": "4 min",
+    "slug": "capacitor-vue-hybrid-apps"
+  },
+  {
+    "title": "Building Dynamic Sites with Nuxt 4",
+    "excerpt": "Nuxt 4 introduces new ways to streamline SSR and full-stack development in the Vue ecosystem.",
+    "date": "2025-07-08",
+    "readTime": "5 min",
+    "slug": "nuxt-4-dynamic-sites"
+  },
+  {
+    "title": "Next.js App Router Explained",
+    "excerpt": "Master the new App Router architecture in Next.js and learn how to build modern full-stack apps.",
+    "date": "2025-07-06",
+    "readTime": "7 min",
+    "slug": "nextjs-app-router"
+  },
+  {
+    "title": "Vue.js 3 Composition API in Practice",
+    "excerpt": "A practical guide to using Vue 3’s Composition API to organize and scale your components.",
+    "date": "2025-07-04",
+    "readTime": "6 min",
+    "slug": "vue3-composition-api-guide"
+  },
+  {
+    "title": "GUI Development in Python with Tkinter",
+    "excerpt": "Tkinter is a great way to create lightweight GUIs in Python. Learn how to build your first app.",
+    "date": "2025-07-02",
+    "readTime": "5 min",
+    "slug": "python-gui-with-tkinter"
+  }
+]
