@@ -23,8 +23,13 @@
 </template>
 
 <script setup lang="ts">
+import { useHead } from '#imports'
 import { ref, onMounted } from 'vue'
 import type { Project } from '~/types/projects'
+
+useHead({
+  title:"My Projects",
+})
 
 const projects = ref<Project[]>([])
 const loading = ref(true)
