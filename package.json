@@ -1,78 +1,36 @@
-# 🌐 Personal Portfolio – Built with Nuxt 4, Tailwind CSS, and Vue 3
-
-This is my personal portfolio website, designed and developed to showcase my skills, projects, and professional experience. The application is built using modern frontend technologies including **Nuxt 4**, **Vue 3**, and **Tailwind CSS**, and demonstrates my ability to develop performant, responsive, and visually engaging user interfaces.
-
----
-
-## 🛠️ Tech Stack Overview
-
-### ⚙️ Core Frameworks & Libraries
-
-| Technology              | Description                                                                                                                                    |
-| ----------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
-| **Nuxt 4**              | A powerful Vue-based meta-framework for server-side rendering (SSR), static site generation (SSG), and high-performance frontend applications. |
-| **Vue 3**               | The progressive JavaScript framework used to build interactive and modular UI components.                                                      |
-| **Vue Router**          | Handles client-side navigation between pages and views.                                                                                        |
-| **Tailwind CSS**        | Utility-first CSS framework for rapid UI development with built-in responsive design.                                                          |
-| **@nuxtjs/tailwindcss** | Official Nuxt module for seamless Tailwind CSS integration.                                                                                    |
-| **@heroicons/vue**      | Scalable SVG icon library from Tailwind Labs used throughout the UI.                                                                           |
-| **@vueuse/motion**      | Vue 3 animation library for smooth motion effects and transitions.                                                                             |
-
----
-
-### ✉️ Email Integration
-
-| Package              | Description                                                                                      |
-| -------------------- | ------------------------------------------------------------------------------------------------ |
-| **@emailjs/browser** | Enables sending emails directly from the browser using the EmailJS API (used for contact forms). |
-| **emailjs-com**      | Legacy version of the EmailJS SDK (optional/alternative use).                                    |
-
----
-
-### 🧰 Development Tools
-
-| Tool             | Description                                                                                |
-| ---------------- | ------------------------------------------------------------------------------------------ |
-| **TypeScript**   | Enhances JavaScript with static types for better tooling and reliability.                  |
-| **ts-node**      | Allows running TypeScript files directly in Node.js.                                       |
-| **tsx**          | A fast TypeScript runtime for scripting and development.                                   |
-| **PostCSS**      | CSS processor used alongside Tailwind for additional CSS tooling.                          |
-| **Autoprefixer** | Automatically adds vendor prefixes to ensure cross-browser compatibility.                  |
-| **Concurrently** | Enables running multiple npm scripts at once (useful for multitasking during development). |
-
----
-
-## 📜 NPM Scripts
-
-```json
-"scripts": {
-  "build": "nuxt build",             // Builds the production-ready app
-  "dev": "nuxt dev",                 // Starts the local development server
-  "generate": "nuxt generate",       // Generates a static version of the app
-  "preview": "nuxt preview",         // Previews the generated static site
-  "postinstall": "nuxt prepare",     // Nuxt-specific post-install setup
-  "dev:all": "npm run dev"           // Shortcut to start development
+{
+  "name": "nuxt-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "nuxt build",
+    "dev": "nuxt dev",
+    "generate": "nuxt generate",
+    "preview": "nuxt preview",
+    "postinstall": "nuxt prepare",
+    "dev:all": "npm run dev"
+  },
+  "dependencies": {
+    "@emailjs/browser": "^4.4.1",
+    "@heroicons/vue": "^2.2.0",
+    "@nuxtjs/tailwindcss": "^6.14.0",
+    "@vueuse/motion": "^3.0.3",
+    "emailjs-com": "^3.2.0",
+    "nuxt": "^4.0.0",
+    "pg": "^8.16.3",
+    "pg-hstore": "^2.3.4",
+    "sequelize": "^6.37.7",
+    "vue": "^3.5.17",
+    "vue-router": "^4.5.1"
+  },
+  "devDependencies": {
+    "@types/sequelize": "^4.28.20",
+    "autoprefixer": "^10.4.21",
+    "concurrently": "^8.2.1",
+    "postcss": "^8.5.6",
+    "tailwindcss": "^3.4.3",
+    "ts-node": "^10.9.2",
+    "tsx": "^4.20.3",
+    "typescript": "^5.8.3"
+  }
 }
-```
-
----
-
-## 🚀 Deployment
-
-This site is deployed using [Render](https://render.com/), a modern cloud platform for hosting static and dynamic web apps.
-
-* 🔗 **Live Site**: [https://portfolio-qx6l.onrender.com](https://portfolio-qx6l.onrender.com)
-
----
-
-## 💡 Project Purpose
-
-This portfolio project demonstrates:
-
-* Expertise in Nuxt and Vue.js for building modern web interfaces
-* Mastery of Tailwind CSS for responsive and elegant UI design
-* Integration of external APIs like EmailJS for real-world interactivity
-* Ability to deploy and maintain a production-grade frontend project
-
----
-
