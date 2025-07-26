@@ -32,10 +32,12 @@
           <ul class="space-y-1 text-gray-300">
             <li>C</li>
             <li>C++</li>
+            <li>Fortran</li>
             <li>Java</li>
             <li>Kotlin</li>
             <li>JavaScript</li>
             <li>TypeScript</li>
+            <li>PHP</li>
             <li>C#</li>
             <li>Python</li>
             <li>Go</li>
@@ -63,6 +65,10 @@
           <ul class="space-y-1 text-gray-300">
             <li>Node.js</li>
             <li>Express</li>
+            <li>Fastify</li>
+            <li>Fiber</li>
+            <li>SlimPHP</li>
+            <li>Flask</li>
             <li>PostgreSQL</li>
             <li>MongoDB</li>
             <li>Git / GitHub</li>
