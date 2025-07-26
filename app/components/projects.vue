@@ -29,9 +29,11 @@
       }"
     >
       <img :src="project?.image" :alt="project?.title" class="w-full h-48 object-cover" />
+
       <div class="p-5 flex flex-col flex-grow">
         <h3 class="text-xl font-semibold mb-2">{{ project?.title }}</h3>
         <p class="text-gray-400 text-sm mb-4">{{ project?.description }}</p>
+
         <div class="flex flex-wrap gap-2 mb-4">
           <span
             v-for="tech in project?.technologies"
@@ -41,18 +43,25 @@
             {{ tech }}
           </span>
         </div>
+
         <div class="flex gap-4 text-sm text-gray-400 mt-auto">
-          <a :href="project?.repositoryLink" target="_blank" class="flex items-center gap-1 hover:text-white">
+          <a
+            v-if="project?.repositoryLink"
+            :href="project.repositoryLink"
+            target="_blank"
+            class="flex items-center gap-1 hover:text-white"
+          >
             <CodeBracketIcon class="w-5 h-5" /> Code Link
           </a>
-            <a v-if="project?.demoLink"
-    :href="project.demoLink"
-    target="_blank"
-    class="flex items-center gap-1 hover:text-white"
-  >
-    <ArrowTopRightOnSquareIcon class="w-5 h-5" /> Live Demo
-  </a>
-               
+
+          <a
+            v-if="project?.demoLink && project.demoLink !== ''"
+            :href="project.demoLink"
+            target="_blank"
+            class="flex items-center gap-1 hover:text-white"
+          >
+            <ArrowTopRightOnSquareIcon class="w-5 h-5" /> Live Demo
+          </a>
         </div>
       </div>
     </v-motion>
@@ -62,7 +71,7 @@
 <script setup lang="ts">
 import { CodeBracketIcon, ArrowTopRightOnSquareIcon } from '@heroicons/vue/24/outline'
 import { defineProps } from 'vue'
-import type { Project } from '~/types/projects';
+import type { Project } from '~/types/projects'
 
 defineProps<{
   projects: Project[]
