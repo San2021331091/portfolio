@@ -5,12 +5,12 @@
     "technologies": ["Cpp"],
     "image": "https://play-lh.googleusercontent.com/aM5Pc5NSN9A3y-2QhHk7L2qMeiHGDzXa57CewUXJbolc-DHa6hJBYr0ANEdGmAsxqCQ",
     "repositoryLink": "https://github.com/San2021331091/Cadillacs-and-Dinosaurs-Game",
-    "demoLink": "https://github.com/San2021331091/Cadillacs-and-Dinosaurs-Game"
+    "demoLink": ""
   },
   {
     "title": "Smart Cart",
     "description": "Smart Cart is an innovative e-commerce platform designed to modernize the shopping experience by integrating real-time location tracking, voice-controlled inputs, smart navigation, and a clean, user-friendly interface. The project combines multiple technologies such as Python for backend processing, TypeScript for frontend interactivity, Kotlin for mobile applications, Go for high-performance services, and C# and PHP for various system components. This multi-language approach ensures flexibility and scalability for a comprehensive smart shopping ecosystem.",
-    "technologies": ["Python", "TypeScript", "Kotlin", "Go", "C#", "Php"],
+    "technologies": ["TypeScript", "Kotlin", "Go", "C#", "Php","Python"],
     "image": "https://i.ibb.co/mCgH4gm9/shoper-sl-Lo94w-ES2-M-unsplash.jpg",
     "repositoryLink": "https://github.com/San2021331091/Smart-Cart",
     "demoLink": "https://www.upload-apk.com/en/xWSp79MUdpt4Bnt"
@@ -45,7 +45,7 @@
   "technologies": ["Kotlin", "Java Swing"],
   "image": "https://i.ibb.co/fdPN519P/pacman.jpg",
   "repositoryLink":"https://codeberg.org/San2021331091/Pacman_Game_Using_Kotlin/src/branch/main",
-  "demoLink": "https://github.com/your-username/pacman-kotlin-swing"
+  "demoLink": ""
   },
   {
   "title": "POFFEE - Live TV Streaming App",
