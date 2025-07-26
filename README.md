@@ -1,9 +1,9 @@
 ---
 
-# 🌐 Personal Portfolio – Built with Nuxt 4, Tailwind CSS, and Vue 3
+# 🌐 Personal Portfolio – Built with Nuxt 4,HTML 5,Tailwind CSS, and Vue 3
 
 
-This is my personal portfolio website, designed and developed to showcase my skills, projects, and professional experience. The application is built using modern frontend technologies including **Nuxt 4**, **Vue 3**, and **Tailwind CSS**, and demonstrates my ability to develop performant, responsive, and visually engaging user interfaces.
+This is my personal portfolio website, designed and developed to showcase my skills, projects, and professional experience. The application is built using modern frontend technologies including **Nuxt 4**,**HTML 5**,**Vue 3**, and **Tailwind CSS**, and demonstrates my ability to develop performant, responsive, and visually engaging user interfaces.
 
 ---
 
@@ -17,6 +17,7 @@ This is my personal portfolio website, designed and developed to showcase my ski
 | **Vue 3**               | The progressive JavaScript framework used to build interactive and modular UI components.                                                      |
 | **Vue Router**          | Handles client-side navigation between pages and views.                                                                                        |
 | **Tailwind CSS**        | Utility-first CSS framework for rapid UI development with built-in responsive design.                                                          |
+| **HTML 5**        | HTML5 (Hypertext Markup Language 5) is a markup language used for structuring and presenting hypertext documents on the World Wide Web.                                          |
 | **@nuxtjs/tailwindcss** | Official Nuxt module for seamless Tailwind CSS integration.                                                                                    |
 | **@heroicons/vue**      | Scalable SVG icon library from Tailwind Labs used throughout the UI.                                                                           |
 | **@vueuse/motion**      | Vue 3 animation library for smooth motion effects and transitions.                                                                             |
