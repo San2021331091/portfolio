@@ -44,7 +44,7 @@
   "description": "A classic Pacman arcade game recreation built using Kotlin and Java Swing for the desktop. Navigate Pacman through the maze, collect dots, avoid ghosts, and challenge your high score! It includes classic gameplay logic, ghost AI, custom maze design, point tracking, and responsive keyboard controls with a simple UI.",
   "technologies": ["Kotlin", "Java Swing"],
   "image": "https://i.ibb.co/fdPN519P/pacman.jpg",
-  "repositoryLink":"https://codeberg.org/San2021331091/Pacman_Game_Using_Kotlin/src/branch/main"
+  "repositoryLink":"https://codeberg.org/San2021331091/Pacman_Game_Using_Kotlin/src/branch/main",
   "demoLink": "https://github.com/your-username/pacman-kotlin-swing"
   },
   {
