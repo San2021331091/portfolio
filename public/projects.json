@@ -38,5 +38,23 @@
     "image": "https://i.ibb.co/KzpCyMJt/v2osk-1-Z2nii-BPg5-A-unsplash.jpg",
     "repositoryLink": "https://github.com/Davoidsj/Image-Slider",
     "demoLink": "https://aquamarine-boba-4ca83e.netlify.app/"
-  }
+  },
+  {
+  "title": "Pacman Game",
+  "description": "A classic Pacman arcade game recreation built using Kotlin and Java Swing for the desktop. Navigate Pacman through the maze, collect dots, avoid ghosts, and challenge your high score! It includes classic gameplay logic, ghost AI, custom maze design, point tracking, and responsive keyboard controls with a simple UI.",
+  "technologies": ["Kotlin", "Java Swing"],
+  "image": "https://i.ibb.co/fdPN519P/pacman.jpg",
+  "repositoryLink":"https://codeberg.org/San2021331091/Pacman_Game_Using_Kotlin/src/branch/main"
+  "demoLink": "https://github.com/your-username/pacman-kotlin-swing"
+  },
+  {
+  "title": "POFFEE - Live TV Streaming App",
+  "description": "POFFEE is a live TV streaming android based mobile app designed with modular architecture using multiple technologies. It features animated splash screens (Kotlin), a modern frontend (Vue + TypeScript + Capacitor), backend channel management (Express + EJS/HTML), user authentication (Django + Firebase), live comment support (Fastify), and notification systems (Nodemailer). It supports seamless browsing of channels, categorized content like movies and sports, and real-time user engagement through comments and analytics visualization.",
+  "technologies": ["Kotlin", "XML", "Vue", "TypeScript", "Capacitor.js", "Express", "EJS", "HTML5", "Django", "Matplotlib", "Firebase", "Fastify", "Nodemailer"],
+  "image": "https://i.ibb.co/1fmF853V/images.jpg",
+  "repositoryLink": "https://codeberg.org/San2021331091/Live-TV-App-Poffee",
+  "demoLink": "https://www.upload-apk.com/en/H8sz23wbYwJbfyu"
+}
+
+  
 ]
