@@ -3,7 +3,7 @@
     <div class="flex flex-col items-center text-center w-full max-w-5xl">
       <!-- Profile Image -->
       <img
-        src="https://i.ibb.co/rG8x8htK/output-onlinepngtools.png"
+        src="https://i.ibb.co/jP9W2pPp/Santosh-Saha.png"
         alt="Profile"
         class="w-32 h-32 sm:w-48 sm:h-48 rounded-full mb-6 border-4 border-white shadow-lg"
       />
