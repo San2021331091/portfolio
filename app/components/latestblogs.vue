@@ -1,5 +1,5 @@
 <template>
-  <section class="text-white py-16 px-4 md:px-10">
+  <section class="text-white pt-16 pb-32 px-4 md:px-10">
     <h2 class="text-2xl md:text-3xl font-bold mb-12 text-center">{{ title }}</h2>
     <BlogCardList :posts="latestBlogs" />
   </section>
