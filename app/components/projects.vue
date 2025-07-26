@@ -43,11 +43,16 @@
         </div>
         <div class="flex gap-4 text-sm text-gray-400 mt-auto">
           <a :href="project?.repositoryLink" target="_blank" class="flex items-center gap-1 hover:text-white">
-            <CodeBracketIcon class="w-5 h-5" /> Code
+            <CodeBracketIcon class="w-5 h-5" /> Code Link
           </a>
-          <a :href="project?.demoLink" target="_blank" class="flex items-center gap-1 hover:text-white">
-            <ArrowTopRightOnSquareIcon class="w-5 h-5" /> Live Demo
-          </a>
+            <a v-if="project?.demoLink"
+    :href="project.demoLink"
+    target="_blank"
+    class="flex items-center gap-1 hover:text-white"
+  >
+    <ArrowTopRightOnSquareIcon class="w-5 h-5" /> Live Demo
+  </a>
+               
         </div>
       </div>
     </v-motion>
