@@ -62,15 +62,6 @@
   "image": "https://i.postimg.cc/SRw6GfVc/flappy-bird.jpg",
   "repositoryLink": "https://codeberg.org/San2021331091/Flappy_Bird_Game_Using_Kotlin",
   "demoLink": ""
-  },
-
-  {
-  "title": "Student Management System",
-  "description": "A complete desktop-based Student Management System built using Python and Tkinter. It allows users to add, view, update, delete, and search student records in a remote MySQL database over a secure SSL connection. The GUI features themed widgets, a date picker, and a responsive table using ttk and tkcalendar. It also supports fetching a live app icon from a URL and provides user feedback via message boxes.",
-  "technologies": ["Python", "Tkinter", "MySQL", "Pillow", "tkcalendar", "Requests"],
-  "image":"https://i.postimg.cc/255hW5fQ/student-management-system.jpg",
-  "repositoryLink": "https://codeberg.org/San2021331091/student-management-system-with-tkinter",
-  "demoLink":"https://codeberg.org/San2021331091/student-management-system-with-tkinter/src/branch/main/dist/main.exe" 
   }
 
 
