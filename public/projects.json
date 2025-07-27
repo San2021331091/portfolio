@@ -55,13 +55,21 @@
   "repositoryLink": "https://codeberg.org/San2021331091/Live-TV-App-Poffee",
   "demoLink": "https://www.upload-apk.com/en/H8sz23wbYwJbfyu"
 },
-  {
+ {
   "title": "Flappy Bird Game",
   "description": "A classic Flappy Bird arcade-style game recreation built using Kotlin and Java Swing. The player controls a bird that must fly between sets of pipes without hitting them. The game features gravity-based movement, keyboard control (spacebar to flap), randomly generated obstacles, score tracking, and image rendering using AWT/Swing. It showcases object-oriented principles and custom game loop logic using Java Timers.",
   "technologies": ["Kotlin", "Java Swing", "AWT"],
   "image": "https://i.postimg.cc/SRw6GfVc/flappy-bird.jpg",
   "repositoryLink": "https://codeberg.org/San2021331091/Flappy_Bird_Game_Using_Kotlin",
   "demoLink": ""
+  },
+  {
+  "title": "Student Management System",
+  "description": "A complete desktop-based Student Management System built using Python and Tkinter. It allows users to add, view, update, delete, and search student records in a remote MySQL database over a secure SSL connection. The GUI features themed widgets, a date picker, and a responsive table using ttk and tkcalendar. It also supports fetching a live app icon from a URL and provides user feedback via message boxes.",
+  "technologies": ["Python", "Tkinter", "MySQL", "Pillow", "tkcalendar", "Requests"],
+  "image":"https://i.postimg.cc/255hW5fQ/student-management-system.jpg",
+  "repositoryLink": "https://codeberg.org/San2021331091/student-management-system-with-tkinter",
+  "demoLink":"https://codeberg.org/San2021331091/student-management-system-with-tkinter/src/branch/main/dist/main.exe" 
   }
   
 
