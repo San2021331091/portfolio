@@ -78,5 +78,16 @@
   "image": "https://i.postimg.cc/cHcskwGS/images.jpg",
   "repositoryLink": "https://codeberg.org/San2021331091/JavaFX_Fruit_Market_Tutorials",
   "demoLink": ""
+},
+
+{
+  "title": "Moffee - Android Movie App",
+  "description": "Moffee is a modern movie streaming application developed for Android using React Native and the Metro bundler. It offers users a seamless interface to explore trending movies, browse actor profiles, and stream video content. The app utilizes the TMDB API to deliver up-to-date movie data, while a custom Fastify.js backend handles content streaming. Built with TypeScript, Moffee ensures type-safe, scalable, and efficient mobile development.",
+  "technologies": ["React Native", "Metro", "Fastify.js", "TMDB API", "TypeScript"],
+  "platform": "Android",
+  "image": "https://i.postimg.cc/1t0jpKhp/images.jpg", 
+  "repositoryLink": "https://codeberg.org/San2021331091/Movie_Details_Streaming.git", 
+  "demoLink": "https://www.upload-apk.com/en/v8hsFu7FzGJJZRV"
 }
+  
 ]
