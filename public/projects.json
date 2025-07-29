@@ -70,5 +70,13 @@
     "image": "https://i.postimg.cc/255hW5fQ/student-management-system.jpg",
     "repositoryLink": "https://codeberg.org/San2021331091/student-management-system-with-tkinter",
     "demoLink": "https://codeberg.org/San2021331091/student-management-system-with-tkinter/src/branch/main/dist/main.exe"
-  }
+  },
+  {
+  "title": "Fruit Market (JavaFX App)",
+  "description": "Fruit Market is a desktop GUI application built using JavaFX. It features a clean and interactive fruit shop interface designed with FXML and styled with JavaFX components. The app initializes a fixed-size stage, loads views from `MarketView.fxml`, and applies a custom window icon. This project demonstrates a typical JavaFX application structure and is ideal for beginners learning JavaFX UI development.",
+  "technologies": ["Java", "JavaFX", "FXML"],
+  "image": "https://i.postimg.cc/cHcskwGS/images.jpg",
+  "repositoryLink": "https://codeberg.org/San2021331091/JavaFX_Fruit_Market_Tutorials",
+  "demoLink": ""
+}
 ]
