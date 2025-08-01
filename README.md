@@ -21,7 +21,7 @@ This is my personal portfolio website, designed and developed to showcase my ski
 | **@nuxtjs/tailwindcss** | Official Nuxt module for seamless Tailwind CSS integration.                                                                                    |
 | **@heroicons/vue**      | Scalable SVG icon library from Tailwind Labs used throughout the UI.                                                                           |
 | **@vueuse/motion**      | Vue 3 animation library for smooth motion effects and transitions.                                                                             |
-
+| **vue3-lottie**         | Vue 3 component for playing Lottie animations (JSON files from After Effects). It's lightweight, supports autoplay, loop, and play controls
 ---
 
 ### ✉️ Email Integration
