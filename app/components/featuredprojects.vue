@@ -10,8 +10,8 @@
 </template>
 
 <script lang="ts">
-import { ref, onMounted } from 'vue'
-import type { Project } from '~/types/projects'
+import { ref, onMounted } from 'vue';
+import type { Project } from '~/types/projects';
 
 export default {
   props: {
@@ -22,26 +22,26 @@ export default {
   },
   setup() {
     const projects = ref<Project[]>([])
-    const loading = ref(true)
-    const error = ref(false)
+    const loading = ref<Boolean>(true);
+    const error = ref<Boolean>(false);
 
     onMounted(async () => {
       loading.value = true
       error.value = false
       try {
-        const res = await fetch('/projects.json')
-        if (!res.ok) throw new Error('Network response not ok')
-        const json: Project[] = await res.json()
-        projects.value = json.slice(0, 3)
+        const res = await fetch('https://flask-admin-6nf5.onrender.com/projects');
+        if (!res.ok) throw new Error('Network response not ok');
+        const json: Project[] = await res.json();
+        projects.value = json.slice(0, 3);
       } catch (err) {
-        console.error('Error fetching projects:', err)
-        error.value = true
+        console.error('Error fetching projects:', err);
+        error.value = true;
       } finally {
-        loading.value = false
+        loading.value = false;
       }
     })
 
-    return { projects, loading, error }
+    return { projects, loading, error };
   }
 }
 </script>
