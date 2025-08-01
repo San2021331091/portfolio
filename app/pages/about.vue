@@ -16,8 +16,8 @@
     <section class="text-center mb-16 px-4">
       <h2 class="text-3xl font-semibold mb-4">Education</h2>
       <div class="max-w-2xl mx-auto text-gray-300 text-lg space-y-2">
-        <p><span class="font-bold text-white">St. Gregory High School and College:</span> Passed HSC</p>
         <p><span class="font-bold text-white">HSC (2021):</span> GPA 5.00</p>
+          <p><span class="font-bold text-white">Institution: St. Gregory High School and College</span></p>
         <p><span class="font-bold text-white">BSc in Computer Science & Engineering (2023 - 2025):</span> SUST</p>
       </div>
     </section>
