@@ -1,5 +1,5 @@
 <template>
-  <div class="fixed inset-0 bg-gradient-to-b from-[#000010] via-[#001f3f] to-black flex items-center justify-center space-bg relative overflow-hidden">
+  <div class="h-[100dvh] w-full bg-gradient-to-b from-[#000010] via-[#001f3f] to-black flex items-center justify-center relative overflow-hidden">
     
     <!-- Mercury -->
     <div class="absolute w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-gray-500 to-gray-700 top-6 left-6 shadow-sm"></div>
@@ -49,9 +49,6 @@
     </ClientOnly>
   </div>
 </template>
-
-
-
 
 <script setup lang="ts">
 import { Vue3Lottie } from 'vue3-lottie'
