@@ -39,6 +39,7 @@
       <SkillCard label="JavaScript" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/javascript/javascript-original.svg" />
       <SkillCard label="TypeScript" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" />
       <SkillCard label="PHP" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/php/php-original.svg" />
+      <SkillCard label="Dart" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" />
       <SkillCard label="C#" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" />
       <SkillCard label="Python" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
       <SkillCard label="Go" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" />
@@ -53,6 +54,7 @@
       <SkillCard label="React Native" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
       <SkillCard label="Jetpack Compose" logo="https://i.postimg.cc/jqkp9hMx/jetpackcompose-original-8x.png/" />
       <SkillCard label="JavaFX" logo="https://i.postimg.cc/QxYnVN2j/javafx.png" />
+      <SkillCard label="Flutter" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" />
       <SkillCard label="Vue.js" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" />
       <SkillCard label="Nuxt.js" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg" />
       <SkillCard label="Tailwind CSS" logo="https://i.postimg.cc/GpKLsyd4/twcss.png" />
