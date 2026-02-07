@@ -80,7 +80,7 @@
       <SkillCard label="CI/CD" logo="https://i.postimg.cc/L4wyj49D/ci.png" />
     </div>
   </div>
-  <<div class="mt-8 flex justify-center">
+  <div class="mt-8 flex justify-center">
   <button
     class="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 text-white font-semibold shadow-md
            hover:bg-green-700 active:scale-95 transition-all duration-200"
