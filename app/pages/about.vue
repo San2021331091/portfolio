@@ -7,7 +7,6 @@
       <p class="max-w-3xl mx-auto text-lg text-gray-300 leading-relaxed">
         I'm a web and app developer currently studying Computer Science and Engineering at
         <span class="text-white font-semibold">Shahjalal University of Science and Technology (SUST)</span>.
-        I passed my HSC in 2021 with a perfect GPA of 5.00.
         I’m actively developing modern web and mobile applications using a wide stack of frontend and backend technologies.
       </p>
     </section>
@@ -81,15 +80,16 @@
       <SkillCard label="CI/CD" logo="https://i.postimg.cc/L4wyj49D/ci.png" />
     </div>
   </div>
-  <div class="mt-8">
-      <button
+  <<div class="mt-8 flex justify-center">
+  <button
     class="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 text-white font-semibold shadow-md
            hover:bg-green-700 active:scale-95 transition-all duration-200"
     onclick="window.location.href='https://drive.google.com/uc?export=download&id=1yy9JeRTFp79qW8hxuJTi0-4tFAPQLlji';"
   >
-    Download My CV
-      </button>
-    </div>
+    Download My CV
+  </button>
+</div>
+
 </section>
 
 
