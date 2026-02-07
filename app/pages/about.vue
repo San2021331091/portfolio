@@ -81,6 +81,15 @@
       <SkillCard label="CI/CD" logo="https://i.postimg.cc/L4wyj49D/ci.png" />
     </div>
   </div>
+  <div class="mt-8">
+      <button
+    class="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 text-white font-semibold shadow-md
+           hover:bg-green-700 active:scale-95 transition-all duration-200"
+    onclick="window.location.href='https://drive.google.com/uc?export=download&id=1yy9JeRTFp79qW8hxuJTi0-4tFAPQLlji';"
+  >
+    Download My CV
+      </button>
+    </div>
 </section>
 
 
