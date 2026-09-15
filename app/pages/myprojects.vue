@@ -39,7 +39,7 @@ onMounted(async () => {
   loading.value = true
   error.value = false
   try {
-    const res = await fetch('https://flask-admin-6nf5.onrender.com/projects')
+    const res = await fetch('https://portfolio-admin-jet-nine.vercel.app/projects')
     if (!res.ok) throw new Error('Network error')
     const json: Project[] = await res.json()
     projects.value = json
