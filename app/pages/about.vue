@@ -82,9 +82,12 @@
     </div>
 
     <div>
-      <h3 class="text-2xl font-bold text-purple-400 mb-6 text-center">Backend & Tools</h3>
+      <h3 class="text-2xl font-bold text-purple-400 mb-6 text-center">Fullstack Frameworks</h3>
+      <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto px-4">
+      
       <SkillCard label="Next.js" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" />
             <SkillCard label="Nuxt.js" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg" />
+      </div>
       </div>
   </div>
   <div class="mt-8 flex justify-center">
