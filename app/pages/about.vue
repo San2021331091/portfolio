@@ -81,7 +81,7 @@
       <SkillCard label="CI/CD" logo="https://i.postimg.cc/L4wyj49D/ci.png" />
     </div>
 
-    <div>
+    <div class="mt-16">
       <h3 class="text-2xl font-bold text-purple-400 mb-6 text-center">Fullstack Frameworks</h3>
       <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto px-4">
       
