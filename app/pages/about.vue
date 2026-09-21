@@ -42,6 +42,7 @@
       <SkillCard label="C#" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/csharp/csharp-original.svg" />
       <SkillCard label="Python" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/python/python-original.svg" />
       <SkillCard label="Go" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/go/go-original.svg" />
+      <SkillCard label="Dart" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/dart/dart-original.svg" />
     </div>
   </div>
 
@@ -51,11 +52,11 @@
     <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-6 max-w-6xl mx-auto px-4">
       <SkillCard label="React" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
       <SkillCard label="React Native" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" />
+      <SkillCard label="Flutter" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" />
       <SkillCard label="Jetpack Compose" logo="https://i.postimg.cc/jqkp9hMx/jetpackcompose-original-8x.png/" />
       <SkillCard label="JavaFX" logo="https://i.postimg.cc/QxYnVN2j/javafx.png" />
       <SkillCard label="Flutter" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/flutter/flutter-original.svg" />
       <SkillCard label="Vue.js" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vuejs/vuejs-original.svg" />
-      <SkillCard label="Nuxt.js" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg" />
       <SkillCard label="Tailwind CSS" logo="https://i.postimg.cc/GpKLsyd4/twcss.png" />
       <SkillCard label="HTML5" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/html5/html5-original.svg" />
       <SkillCard label="CSS3" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" />
@@ -79,6 +80,12 @@
       <SkillCard label="AWS" logo="https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png" />
       <SkillCard label="CI/CD" logo="https://i.postimg.cc/L4wyj49D/ci.png" />
     </div>
+
+    <div>
+      <h3 class="text-2xl font-bold text-purple-400 mb-6 text-center">Backend & Tools</h3>
+      <SkillCard label="Next.js" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nextjs/nextjs-original.svg" />
+            <SkillCard label="Nuxt.js" logo="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/nuxtjs/nuxtjs-original.svg" />
+      </div>
   </div>
   <div class="mt-8 flex justify-center">
   <button
