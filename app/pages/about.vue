@@ -94,7 +94,7 @@
   <button
     class="inline-flex items-center gap-2 rounded-lg bg-green-600 px-6 py-3 text-white font-semibold shadow-md
            hover:bg-green-700 active:scale-95 transition-all duration-200"
-    onclick="window.location.href='https://drive.google.com/file/d/18gyMkEcIs6UkDMLOKSs5WXgyThvH_V6V/view?usp=drivesdk';"
+    onclick="window.location.href='https://drive.google.com/file/d/1xMM3gtdmhJjL7vjKVrd8L4HEGtUZLIDo/view?usp=drivesdk';"
   >
     Download My CV
   </button>
