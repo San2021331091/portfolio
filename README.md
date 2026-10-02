@@ -61,26 +61,24 @@ This is my personal portfolio website, designed and developed to showcase my ski
 
 ## AI Blog Generation
 
-The blog pages automatically fill the store to at least two AI-generated articles when a visitor opens the site. The Node server also publishes one new AI-generated article daily at 09:00 UTC by default. The daily task runs once on server startup if today's run was missed, and saves its last run date alongside the blog store to avoid duplicate daily posts.
+The blog pages automatically fill the store to at least two AI-generated articles when a visitor opens the site. Vercel Cron requests `/api/cron/daily-blog` once daily at 09:00 UTC in production. It is protected by `CRON_SECRET` and skips generation if a post is already dated today.
 
-Configure the schedule and timezone with these server-only variables:
+Set these server-only variables in Vercel:
 
 ```env
 NUXT_OPENROUTER_API_KEY=your_openrouter_api_key
-NUXT_BLOGS_STORAGE_FILE=.data/blog-posts.json
-NUXT_BLOG_GENERATION_CRON="0 9 * * *"
-NUXT_BLOG_GENERATION_TIMEZONE=UTC
+CRON_SECRET=your_long_random_secret
 ```
 
-Keep the OpenRouter key private and never add it to client-side code. The API key is available from OpenRouter's settings.
+Keep the OpenRouter key and cron secret private and never add them to client-side code. Create a **private Vercel Blob store** and connect it to this Vercel project; Vercel supplies the Blob OIDC environment automatically. The app stores generated articles there because Vercel Function filesystems are not persistent. Local development continues to use `.data/blog-posts.json`.
 
-Published articles and the daily run state are stored beside `.data/blog-posts.json` by default. For Render, attach a persistent disk and set `NUXT_BLOGS_STORAGE_FILE` to a path on that disk (for example, `/var/data/blog-posts.json`) so posts and schedule state survive deployments. The scheduler runs inside the Node web service, so it requires an awake server; sleeping or stopped instances cannot run cron tasks while offline. Static hosting and `npm run generate` cannot run the AI endpoints or scheduler.
+The schedule is defined in `vercel.json` and uses UTC. Vercel Cron runs only on production deployments. The API, generation, and cron routes need Nuxt's server build (`npm run build`); do not use `npm run generate` for this deployment. Vercel's Hobby functions have a maximum duration of 300 seconds, configured in `nitro.config.ts`.
 
 ---
 
 ## 🚀 Deployment
 
-This site is deployed using [Render](https://render.com/). The AI draft endpoint requires a Render web service running the Nuxt Node server, not a static site service.
+This site can be deployed to Vercel by importing the repository and using the Nuxt preset with `npm run build`. Connect private Blob storage and set the environment variables above before the production deployment so generated posts persist and the daily cron can authenticate.
 
 * 🔗 **Live Site**: [https://portfolio-qx6l.onrender.com](https://portfolio-qx6l.onrender.com)
 

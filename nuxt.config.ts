@@ -12,10 +12,8 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     openRouterApiKey: process.env.NUXT_OPENROUTER_API_KEY || process.env.NUXT_OPEN_ROUTER_API_KEY || '',
-    blogAdminToken: process.env.NUXT_BLOG_ADMIN_TOKEN || '',
+    cronSecret: process.env.CRON_SECRET || '',
     blogsStorageFile: process.env.NUXT_BLOGS_STORAGE_FILE || '',
-    blogGenerationCron: process.env.NUXT_BLOG_GENERATION_CRON || '0 9 * * *',
-    blogGenerationTimezone: process.env.NUXT_BLOG_GENERATION_TIMEZONE || 'UTC',
     public: {
       EMAILJS_SERVICE_ID: process.env.NUXT_EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ID: process.env.NUXT_EMAILJS_TEMPLATE_ID,
