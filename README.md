@@ -61,24 +61,26 @@ This is my personal portfolio website, designed and developed to showcase my ski
 
 ## AI Blog Generation
 
-The blog pages automatically fill the store to at least two AI-generated articles when a visitor opens the site. Vercel Cron requests `/api/cron/daily-blog` once daily at 09:00 UTC in production. It is protected by `CRON_SECRET` and skips generation if a post is already dated today.
+The blog pages automatically fill the store to at least two AI-generated articles when a visitor opens the site. A daily server scheduler publishes one new article at 09:00 UTC by default. It checks for an article already published that day and catches up once when the server starts.
 
-Set these server-only variables in Vercel:
+Set these server-only variables in Render:
 
 ```env
 NUXT_OPENROUTER_API_KEY=your_openrouter_api_key
-CRON_SECRET=your_long_random_secret
+NUXT_BLOGS_STORAGE_FILE=/var/data/blog-posts.json
+NUXT_BLOG_GENERATION_CRON="0 9 * * *"
+NUXT_BLOG_GENERATION_TIMEZONE=UTC
 ```
 
-Keep the OpenRouter key and cron secret private and never add them to client-side code. Create a **private Vercel Blob store** and connect it to this Vercel project; Vercel supplies the Blob OIDC environment automatically. The app stores generated articles there because Vercel Function filesystems are not persistent. Local development continues to use `.data/blog-posts.json`.
+Keep the OpenRouter key private and never add it to client-side code. Attach a persistent disk to the Render web service at `/var/data`; generated posts are written to the configured file and must live on that disk to survive deploys and restarts. Local development can continue to use `.data/blog-posts.json`.
 
-The schedule is defined in `vercel.json` and uses UTC. Vercel Cron runs only on production deployments. The API, generation, and cron routes need Nuxt's server build (`npm run build`); do not use `npm run generate` for this deployment. Vercel's Hobby functions have a maximum duration of 300 seconds, configured in `nitro.config.ts`.
+Deploy this as a Render **Node Web Service**, not a Static Site. Use `npm ci && npm run build` as the build command and `node .output/server/index.mjs` as the start command. The daily scheduler requires the web service to remain running; sleeping or stopped instances cannot run the schedule while offline. Render persistent disks require a paid web-service plan and limit the service to one instance.
 
 ---
 
 ## 🚀 Deployment
 
-This site can be deployed to Vercel by importing the repository and using the Nuxt preset with `npm run build`. Connect private Blob storage and set the environment variables above before the production deployment so generated posts persist and the daily cron can authenticate.
+This site is deployed using [Render](https://render.com/). The AI blog API and daily scheduler require a Render Node Web Service with a persistent disk, not a static site.
 
 * 🔗 **Live Site**: [https://portfolio-qx6l.onrender.com](https://portfolio-qx6l.onrender.com)
 

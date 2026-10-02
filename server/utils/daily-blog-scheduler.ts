@@ -4,6 +4,7 @@ import { getPublishedBlogs, publishBlog } from './blog-store'
 interface DailyBlogScheduleConfig {
   openRouterApiKey: string
   blogsStorageFile: string
+  blogGenerationTimezone: string
 }
 
 let activeRun: Promise<void> | undefined
@@ -12,7 +13,14 @@ export async function runDailyBlogGeneration(config: DailyBlogScheduleConfig): P
   if (activeRun) return activeRun
 
   const run = (async () => {
-    const runDate = new Date().toISOString().slice(0, 10)
+    const dateParts = new Intl.DateTimeFormat('en-US', {
+      timeZone: config.blogGenerationTimezone,
+      year: 'numeric',
+      month: '2-digit',
+      day: '2-digit',
+    }).formatToParts(new Date())
+    const getPart = (type: string) => dateParts.find(part => part.type === type)?.value ?? ''
+    const runDate = `${getPart('year')}-${getPart('month')}-${getPart('day')}`
     const existingPosts = await getPublishedBlogs(config.blogsStorageFile)
     if (existingPosts.some(post => post.date === runDate)) return
 
