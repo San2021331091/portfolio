@@ -15,4 +15,10 @@ export interface Blog{
     date: string;
     readTime: string;
     slug: string;
+    hasArticle?: boolean;
 };
+
+export interface BlogArticle extends Blog {
+    contentMarkdown: string;
+    contentHtml: string;
+}

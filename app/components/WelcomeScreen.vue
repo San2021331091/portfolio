@@ -1,71 +1,421 @@
 <template>
-  <div class="h-[100dvh] w-full bg-gradient-to-b from-[#000010] via-[#001f3f] to-black flex items-center justify-center relative overflow-hidden">
-    
-    <!-- Mercury -->
-    <div class="absolute w-6 h-6 sm:w-8 sm:h-8 rounded-full bg-gradient-to-tr from-gray-500 to-gray-700 top-6 left-6 shadow-sm"></div>
+  <main class="welcome-screen" aria-label="Santosh Saha portfolio introduction">
+    <canvas ref="canvas" class="welcome-canvas" aria-hidden="true"></canvas>
+    <div class="screen-grain" aria-hidden="true"></div>
 
-    <!-- Venus -->
-    <div class="absolute w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-yellow-400 to-yellow-600 top-24 left-16 shadow-md"></div>
+    <header class="screen-header">
+      <span class="availability"><span class="availability-dot"></span>Independent developer</span>
+      <span class="edition">Portfolio <span>·</span> 2026</span>
+    </header>
 
-    <!-- Earth -->
-    <div class="absolute w-12 h-12 sm:w-16 sm:h-16 rounded-full bg-gradient-to-tr from-blue-500 to-green-500 top-1/3 left-1/5 shadow-[0_0_10px_2px_rgba(0,128,255,0.5)]">
-      <!-- Moon -->
-      <div class="absolute top-1/2 left-1/2 animate-orbit">
-        <div class="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gray-300 shadow-sm"></div>
-      </div>
-    </div>
+    <section class="intro-copy">
+      <p class="eyebrow"><span>01</span> A personal universe</p>
+      <h1>Ideas,<br /><em>in motion.</em></h1>
+      <p class="intro-description">Santosh Saha<br />Developer &amp; creative thinker</p>
+    </section>
 
-    <!-- Mars -->
-    <div class="absolute w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-red-600 to-red-800 top-[70%] left-[10%] shadow-[0_0_10px_2px_rgba(255,69,0,0.5)]"></div>
-
-    <!-- Jupiter -->
-    <div class="absolute w-16 h-16 sm:w-24 sm:h-24 rounded-full bg-gradient-to-tr from-orange-300 to-orange-600 top-10 right-[30%] shadow-[0_0_14px_2px_rgba(255,165,0,0.6)]"></div>
-
-    <!-- Saturn with ring -->
-    <div class="absolute top-1/2 right-10 sm:right-20 w-20 h-20 sm:w-24 sm:h-24">
-      <div class="absolute inset-0 rounded-full bg-gradient-to-tr from-yellow-300 via-yellow-600 to-yellow-800 shadow-lg"></div>
-      <div class="absolute top-1/2 left-1/2 w-28 sm:w-36 h-4 sm:h-6 border-2 sm:border-4 border-yellow-200 rounded-full -translate-x-1/2 -translate-y-1/2 rotate-12 opacity-50"></div>
-    </div>
-
-    <!-- Uranus -->
-    <div class="absolute w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-teal-400 to-teal-700 bottom-24 left-24 shadow-[0_0_10px_2px_rgba(64,224,208,0.4)]"></div>
-
-    <!-- Neptune -->
-    <div class="absolute w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-gradient-to-tr from-blue-700 to-indigo-900 bottom-6 right-8 shadow-[0_0_10px_2px_rgba(25,25,112,0.4)]"></div>
-
-    <!-- Asteroids -->
-    <div class="absolute w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gray-300 opacity-50 top-1/2 left-[15%] shadow-[0_0_4px_1px_rgba(200,200,200,0.3)]"></div>
-    <div class="absolute w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gray-400 opacity-40 top-[25%] left-[70%] shadow-[0_0_4px_1px_rgba(180,180,180,0.3)]"></div>
-    <div class="absolute w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full bg-gray-500 opacity-30 bottom-[20%] right-[30%] shadow-[0_0_4px_1px_rgba(160,160,160,0.3)]"></div>
-    <div class="absolute w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-gray-300 opacity-50 top-[60%] right-[80%] shadow-[0_0_4px_1px_rgba(170,170,170,0.3)]"></div>
-
-    <!-- Rocket Animation -->
-    <ClientOnly>
-      <Vue3Lottie
-        :animationData="animationData"
-        :loop="false"
-        class="w-full h-full bg-transparent relative z-10"
-      />
-    </ClientOnly>
-  </div>
+    <footer class="screen-footer">
+      <span class="footer-label">Designing &amp; building for the web</span>
+      <span class="flight-status"><span class="status-line"></span>Entering orbit</span>
+    </footer>
+    <div class="launch-progress" aria-hidden="true"><span></span></div>
+  </main>
 </template>
 
 <script setup lang="ts">
-import { Vue3Lottie } from 'vue3-lottie'
-import animationData from '../assets/rocket_launch.json'
+import { onBeforeUnmount, onMounted, ref } from 'vue'
+import * as THREE from 'three'
+
+const canvas = ref<HTMLCanvasElement | null>(null)
+
+let renderer: THREE.WebGLRenderer | null = null
+let resizeObserver: ResizeObserver | null = null
+let animationFrame = 0
+
+onMounted(() => {
+  const element = canvas.value
+  if (!element) return
+
+  try {
+    renderer = new THREE.WebGLRenderer({
+      canvas: element,
+      alpha: true,
+      antialias: true,
+      powerPreference: 'low-power',
+    })
+  } catch {
+    return
+  }
+
+  const scene = new THREE.Scene()
+  const camera = new THREE.OrthographicCamera(-5, 5, 5, -5, 0.1, 100)
+  camera.position.z = 20
+
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.6))
+  renderer.setSize(element.clientWidth, element.clientHeight)
+  renderer.outputColorSpace = THREE.SRGBColorSpace
+
+  scene.add(new THREE.HemisphereLight(0xc8f6e8, 0x171d18, 2.1))
+  const keyLight = new THREE.DirectionalLight(0xffc178, 3.2)
+  keyLight.position.set(-3, 5, 8)
+  scene.add(keyLight)
+
+  const stars = new THREE.Points(
+    new THREE.BufferGeometry(),
+    new THREE.PointsMaterial({ color: 0xc9ddd5, size: 0.035, transparent: true, opacity: 0.74 }),
+  )
+  scene.add(stars)
+
+  const earth = new THREE.Mesh(
+    new THREE.SphereGeometry(2.7, 48, 32),
+    new THREE.MeshStandardMaterial({ color: 0x123a35, roughness: 0.82, metalness: 0.08 }),
+  )
+  earth.position.set(1.4, -6.7, -2)
+  scene.add(earth)
+
+  const atmosphere = new THREE.Mesh(
+    new THREE.SphereGeometry(2.78, 48, 32),
+    new THREE.MeshBasicMaterial({ color: 0x67d4b0, transparent: true, opacity: 0.12, side: THREE.BackSide }),
+  )
+  atmosphere.position.copy(earth.position)
+  scene.add(atmosphere)
+
+  const orbit = new THREE.Mesh(
+    new THREE.TorusGeometry(3.18, 0.012, 3, 120),
+    new THREE.MeshBasicMaterial({ color: 0x83d9bc, transparent: true, opacity: 0.28 }),
+  )
+  orbit.position.copy(earth.position)
+  orbit.rotation.set(0.82, 0.18, -0.16)
+  scene.add(orbit)
+
+  const rocket = new THREE.Group()
+  const hullMaterial = new THREE.MeshStandardMaterial({ color: 0xe6e1d5, roughness: 0.32, metalness: 0.38 })
+  const accentMaterial = new THREE.MeshStandardMaterial({ color: 0xd97742, roughness: 0.42, metalness: 0.26 })
+  const darkMaterial = new THREE.MeshStandardMaterial({ color: 0x273634, roughness: 0.3, metalness: 0.52 })
+
+  const hull = new THREE.Mesh(new THREE.CylinderGeometry(0.2, 0.27, 1.15, 20), hullMaterial)
+  rocket.add(hull)
+
+  const nose = new THREE.Mesh(new THREE.ConeGeometry(0.2, 0.48, 20), accentMaterial)
+  nose.position.y = 0.81
+  rocket.add(nose)
+
+  const cockpitWindow = new THREE.Mesh(
+    new THREE.SphereGeometry(0.085, 16, 12),
+    new THREE.MeshStandardMaterial({ color: 0x86d9d0, emissive: 0x327f77, emissiveIntensity: 0.7, metalness: 0.35, roughness: 0.18 }),
+  )
+  cockpitWindow.position.set(0, 0.18, 0.2)
+  rocket.add(cockpitWindow)
+
+  const band = new THREE.Mesh(new THREE.CylinderGeometry(0.245, 0.245, 0.09, 20), darkMaterial)
+  band.position.y = -0.36
+  rocket.add(band)
+
+  for (const side of [-1, 1]) {
+    const fin = new THREE.Mesh(new THREE.ConeGeometry(0.19, 0.42, 3), accentMaterial)
+    fin.position.set(side * 0.2, -0.48, 0)
+    fin.rotation.z = side * -0.68
+    rocket.add(fin)
+
+    const booster = new THREE.Mesh(new THREE.CylinderGeometry(0.075, 0.095, 0.7, 12), hullMaterial)
+    booster.position.set(side * 0.29, -0.13, -0.02)
+    rocket.add(booster)
+  }
+
+  const flame = new THREE.Mesh(
+    new THREE.ConeGeometry(0.18, 0.82, 16),
+    new THREE.MeshBasicMaterial({ color: 0xff9c51, transparent: true, opacity: 0.88 }),
+  )
+  flame.position.y = -0.98
+  flame.rotation.z = Math.PI
+  rocket.add(flame)
+
+  const flameCore = new THREE.Mesh(
+    new THREE.ConeGeometry(0.09, 0.48, 12),
+    new THREE.MeshBasicMaterial({ color: 0xffe8ad, transparent: true, opacity: 0.92 }),
+  )
+  flameCore.position.y = -0.92
+  flameCore.rotation.z = Math.PI
+  rocket.add(flameCore)
+
+  const engineGlow = new THREE.PointLight(0xff8342, 3.6, 3.4)
+  engineGlow.position.y = -0.86
+  rocket.add(engineGlow)
+  scene.add(rocket)
+
+  const viewport = { halfWidth: 5 }
+  const resize = () => {
+    const width = element.clientWidth
+    const height = element.clientHeight
+    if (!width || !height || !renderer) return
+
+    const aspect = width / height
+    viewport.halfWidth = 5 * aspect
+    camera.left = -viewport.halfWidth
+    camera.right = viewport.halfWidth
+    camera.top = 5
+    camera.bottom = -5
+    camera.updateProjectionMatrix()
+    renderer.setSize(width, height)
+
+    const starPositions = new Float32Array(900 * 3)
+    for (let index = 0; index < 900; index++) {
+      starPositions[index * 3] = (Math.random() * 2 - 1) * viewport.halfWidth * 1.15
+      starPositions[index * 3 + 1] = (Math.random() * 2 - 1) * 5.4
+      starPositions[index * 3 + 2] = -5 + Math.random() * 2
+    }
+    stars.geometry.dispose()
+    stars.geometry = new THREE.BufferGeometry()
+    stars.geometry.setAttribute('position', new THREE.BufferAttribute(starPositions, 3))
+
+    const earthX = aspect < 0.8 ? 0.2 : Math.min(viewport.halfWidth * 0.3, 1.8)
+    earth.position.x = earthX
+    atmosphere.position.x = earthX
+    orbit.position.x = earthX
+  }
+
+  resizeObserver = new ResizeObserver(resize)
+  resizeObserver.observe(element)
+  resize()
+
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+  const startedAt = performance.now()
+  const render = (now: number) => {
+    if (!renderer) return
+    const elapsed = (now - startedAt) / 1000
+    const progress = reducedMotion ? 0.32 : THREE.MathUtils.clamp((elapsed - 0.65) / 4.1, 0, 1)
+    const flight = progress * progress * (3 - 2 * progress)
+
+    rocket.position.set(
+      THREE.MathUtils.lerp(viewport.halfWidth < 4 ? 0.25 : 1.3, viewport.halfWidth * 0.38, flight),
+      THREE.MathUtils.lerp(-3.15, 5.6, flight),
+      1,
+    )
+    rocket.rotation.z = -0.34 - flight * 0.1
+    flame.scale.y = 0.82 + Math.sin(elapsed * 17) * 0.12
+    flameCore.scale.y = 0.8 + Math.sin(elapsed * 23 + 0.8) * 0.16
+    engineGlow.intensity = 3 + Math.sin(elapsed * 19) * 0.8
+    stars.rotation.z = elapsed * 0.002
+    renderer.render(scene, camera)
+
+    if (!reducedMotion) animationFrame = window.requestAnimationFrame(render)
+  }
+
+  render(startedAt)
+})
+
+onBeforeUnmount(() => {
+  window.cancelAnimationFrame(animationFrame)
+  resizeObserver?.disconnect()
+  renderer?.dispose()
+  renderer = null
+})
 </script>
 
 <style scoped>
-@keyframes orbit {
-  0% {
-    transform: rotate(0deg) translateX(20px) rotate(0deg);
+.welcome-screen {
+  --ink: #080d0b;
+  --paper: #eee9dc;
+  --muted: #9ba9a0;
+  --signal: #e89359;
+  position: relative;
+  width: 100%;
+  height: 100dvh;
+  overflow: hidden;
+  isolation: isolate;
+  color: var(--paper);
+  background:
+    radial-gradient(ellipse at 72% 82%, rgba(31, 91, 70, 0.3), transparent 36%),
+    radial-gradient(ellipse at 78% 60%, rgba(178, 91, 48, 0.12), transparent 32%),
+    var(--ink);
+}
+
+.welcome-canvas,
+.screen-grain {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.welcome-canvas {
+  z-index: -1;
+}
+
+.screen-grain {
+  z-index: -1;
+  pointer-events: none;
+  opacity: 0.16;
+  background-image: radial-gradient(rgba(231, 239, 229, 0.38) 0.55px, transparent 0.65px);
+  background-size: 4px 4px;
+  mask-image: linear-gradient(90deg, black, transparent 82%);
+}
+
+.screen-header,
+.screen-footer {
+  position: absolute;
+  z-index: 1;
+  left: clamp(24px, 5.5vw, 84px);
+  right: clamp(24px, 5.5vw, 84px);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  font-size: 11px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.screen-header {
+  top: clamp(24px, 4.5vh, 48px);
+}
+
+.screen-footer {
+  bottom: clamp(26px, 5vh, 52px);
+  color: var(--muted);
+}
+
+.availability,
+.flight-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.availability-dot,
+.status-line {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #86d7a8;
+  box-shadow: 0 0 13px rgba(134, 215, 168, 0.7);
+}
+
+.edition {
+  color: var(--muted);
+}
+
+.edition span {
+  padding: 0 5px;
+  color: var(--signal);
+}
+
+.intro-copy {
+  position: absolute;
+  z-index: 1;
+  top: 48%;
+  left: clamp(24px, 11.5vw, 176px);
+  width: min(470px, 52vw);
+  transform: translateY(-50%);
+  animation: arrive 900ms cubic-bezier(0.2, 0.72, 0.2, 1) both;
+}
+
+.eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 22px;
+  color: var(--muted);
+  font-size: 11px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.eyebrow span {
+  color: var(--signal);
+}
+
+h1 {
+  margin: 0;
+  color: var(--paper);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(62px, 8.5vw, 116px);
+  font-weight: 400;
+  line-height: 0.86;
+}
+
+h1 em {
+  color: #a9d9c1;
+  font-weight: 400;
+}
+
+.intro-description {
+  margin: 29px 0 0;
+  color: #c2cbc4;
+  font-size: 14px;
+  line-height: 1.8;
+}
+
+.status-line {
+  width: 28px;
+  height: 1px;
+  border-radius: 0;
+  background: var(--signal);
+  box-shadow: none;
+}
+
+.launch-progress {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: 2px;
+  background: rgba(238, 233, 220, 0.12);
+}
+
+.launch-progress span {
+  display: block;
+  width: 100%;
+  height: 100%;
+  transform: scaleX(0);
+  transform-origin: left;
+  background: var(--signal);
+  animation: progress 5s linear forwards;
+}
+
+@keyframes arrive {
+  from { opacity: 0; transform: translate3d(0, calc(-50% + 18px), 0); }
+  to { opacity: 1; transform: translate3d(0, -50%, 0); }
+}
+
+@keyframes progress {
+  to { transform: scaleX(1); }
+}
+
+@media (max-width: 640px) {
+  .screen-header,
+  .screen-footer {
+    font-size: 9px;
+    letter-spacing: 0.07em;
   }
-  100% {
-    transform: rotate(360deg) translateX(20px) rotate(-360deg);
+
+  .intro-copy {
+    top: auto;
+    bottom: 13%;
+    left: 26px;
+    width: calc(100% - 52px);
+    transform: none;
+  }
+
+  h1 {
+    font-size: clamp(64px, 18vw, 88px);
+  }
+
+  .intro-description {
+    margin-top: 18px;
+    font-size: 13px;
+  }
+
+  .footer-label {
+    max-width: 42%;
   }
 }
-.animate-orbit {
-  animation: orbit 6s linear infinite;
-  transform-origin: left center;
+
+@media (prefers-reduced-motion: reduce) {
+  .intro-copy,
+  .launch-progress span {
+    animation: none;
+  }
 }
 </style>

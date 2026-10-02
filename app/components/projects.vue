@@ -1,58 +1,39 @@
 <template>
   <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-    <v-motion
+    <div
       v-for="(project, index) in projects"
       :key="index"
-      tag="div"
-      :initial="{ opacity: 0, y: 50 }"
-      :enter="{
-        opacity: 1,
-        y: 0,
-        transition: {
-          delay: index * 0.2,
-          duration: 0.6,
-          ease: 'easeOut'
-        }
-      }"
-      while-hover="hover"
-      class="bg-gray-900 rounded-2xl shadow-lg overflow-hidden transition-transform duration-300 flex flex-col"
-      :variants="{
-        hover: {
-          rotate: [0, -2, 2, -2, 2, 0],
-          transition: {
-            duration: 0.6,
-            repeat: 0,
-            ease: 'easeInOut'
-          }
-        }
-      }"
+      class="project-card flex flex-col overflow-hidden rounded-lg border border-white/[0.08] bg-[#111628] shadow-xl shadow-black/10 transition duration-300"
     >
-  <img
-  :src="project?.image"
-  :alt="project?.title"
-  class="w-full h-auto"
-/>
+      <div class="overflow-hidden bg-slate-900">
+        <img
+          :src="project?.image"
+          :alt="project?.title"
+          class="project-image aspect-[16/10] w-full object-cover"
+        />
+      </div>
 
-      <div class="p-5 flex flex-col flex-grow">
-        <h3 class="text-xl font-semibold mb-2">{{ project?.title }}</h3>
-        <p class="text-gray-400 text-sm mb-4">{{ project?.description }}</p>
+      <div class="flex flex-grow flex-col p-5">
+        <h3 class="mb-2 text-lg font-semibold">{{ project?.title }}</h3>
+        <p class="mb-5 text-sm leading-6 text-slate-400">{{ project?.description }}</p>
 
-        <div class="flex flex-wrap gap-2 mb-4">
+        <div class="mb-5 flex flex-wrap gap-2">
           <span
             v-for="tech in project?.technologies"
             :key="tech"
-            class="bg-blue-800 text-xs px-3 py-1 rounded-full"
+            class="rounded-md border border-indigo-300/10 bg-indigo-400/[0.08] px-2.5 py-1 text-xs text-indigo-100/80"
           >
             {{ tech }}
           </span>
         </div>
 
-        <div class="flex gap-4 text-sm text-gray-400 mt-auto">
+        <div class="mt-auto flex flex-wrap gap-5 text-sm text-slate-400">
           <a
             v-if="project?.repositoryLink"
             :href="project.repositoryLink"
             target="_blank"
-            class="flex items-center gap-1 hover:text-white"
+            rel="noopener noreferrer"
+            class="flex items-center gap-1.5 transition hover:text-white"
           >
             <CodeBracketIcon class="w-5 h-5" /> Code Link
           </a>
@@ -61,13 +42,14 @@
             v-if="project?.demoLink && project.demoLink !== ''"
             :href="project.demoLink"
             target="_blank"
-            class="flex items-center gap-1 hover:text-white"
+            rel="noopener noreferrer"
+            class="flex items-center gap-1.5 transition hover:text-white"
           >
             <ArrowTopRightOnSquareIcon class="w-5 h-5" /> Live Demo
           </a>
         </div>
       </div>
-    </v-motion>
+    </div>
   </div>
 </template>
 
@@ -80,3 +62,25 @@ defineProps<{
   projects: Project[]
 }>()
 </script>
+
+<style scoped>
+.project-card:hover {
+  transform: translateY(-5px);
+  border-color: rgb(129 140 248 / 28%);
+}
+
+.project-image {
+  transition: transform 500ms ease;
+}
+
+.project-card:hover .project-image {
+  transform: scale(1.035);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .project-card,
+  .project-image {
+    transition: none;
+  }
+}
+</style>

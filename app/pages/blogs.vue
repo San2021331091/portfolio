@@ -4,30 +4,20 @@
     <p class="text-center text-gray-300 max-w-xl mx-auto mb-10">
       Stay updated with the latest articles, tips, and tutorials about web development and modern technologies.
     </p>
-    <BlogCardList :posts="blogPosts" />
+    <p v-if="isGenerating" role="status" class="py-8 text-center text-sm text-slate-400">Loading…</p>
+    <p v-else-if="generationError" role="alert" class="py-8 text-center text-sm text-rose-200">{{ generationError }}</p>
+    <BlogCardList v-else :posts="posts" />
   </section>
 </template>
 
 <script setup lang="ts">
-import { onMounted, ref } from 'vue'
 import { useHead } from '#imports'
 import BlogCardList from '~/components/blogcardlist.vue'
-import type { Blog } from '~/types/projects'
+import { usePublishedBlogs } from '~/composables/usePublishedBlogs'
 
 useHead({
   title: 'My Blog Posts'
 })
 
-const blogPosts = ref<Blog[]>([])
-
-onMounted(async () => {
-  try {
-    const res = await fetch('/blogs.json')
-    if (!res.ok) throw new Error('Failed to fetch blogs')
-    const data = await res.json()
-    blogPosts.value = data
-  } catch (err) {
-    console.error('Error loading blogs:', err)
-  }
-})
+const { posts, isGenerating, generationError } = usePublishedBlogs()
 </script>

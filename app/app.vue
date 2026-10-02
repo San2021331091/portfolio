@@ -1,25 +1,22 @@
 <script setup lang="ts">
-import { ref, onMounted } from 'vue'
+import { onMounted, ref } from 'vue'
 import WelcomeScreen from './components/WelcomeScreen.vue'
 
-const showSplash = ref(true)
+const route = useRoute()
+const showWelcome = ref(route.path === '/')
 
 onMounted(() => {
-  // Hide splash screen automatically after 5 seconds
-  setTimeout(() => {
-    showSplash.value = false
+  if (!showWelcome.value) return
+
+  window.setTimeout(() => {
+    showWelcome.value = false
   }, 5000)
 })
 </script>
 
 <template>
-  <div>
-    <WelcomeScreen v-if="showSplash" />
-
-    <div v-else>
-      <NuxtLayout name="layout">
-        <NuxtPage />
-      </NuxtLayout>
-    </div>
-  </div>
+  <WelcomeScreen v-if="showWelcome" />
+  <NuxtLayout v-else name="layout">
+    <NuxtPage />
+  </NuxtLayout>
 </template>
