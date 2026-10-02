@@ -10,7 +10,14 @@ export default defineEventHandler(async (event) => {
   const currentPosts = await getPublishedBlogs(config.blogsStorageFile)
   if (currentPosts.length >= minimumGeneratedPosts) return getBlogList(config.blogsStorageFile)
 
-  if (!config.openRouterApiKey || Date.now() < retryAfter) return getBlogList(config.blogsStorageFile)
+  if (!config.openRouterApiKey) {
+    console.warn('OpenRouter generation skipped: NUXT_OPENROUTER_API_KEY is not configured.')
+    return getBlogList(config.blogsStorageFile)
+  }
+  if (Date.now() < retryAfter) {
+    console.warn('OpenRouter generation skipped: waiting for the retry cooldown to expire.')
+    return getBlogList(config.blogsStorageFile)
+  }
 
   if (!firstPostGeneration) {
     firstPostGeneration = (async () => {
@@ -26,9 +33,17 @@ export default defineEventHandler(async (event) => {
         }
         retryAfter = 0
         return getBlogList(config.blogsStorageFile)
-      } catch {
+      } catch (error) {
         retryAfter = Date.now() + 60_000
-        console.warn('OpenRouter blog generation failed; using public/blogs.json.')
+        const failure = error as {
+          statusCode?: number
+          statusMessage?: string
+          response?: { status?: number }
+        }
+        console.warn('OpenRouter blog generation failed; using public/blogs.json.', {
+          statusCode: failure.response?.status ?? failure.statusCode,
+          statusMessage: failure.statusMessage,
+        })
         return getBlogList(config.blogsStorageFile)
       }
     })()
