@@ -19,7 +19,11 @@ let writeQueue: Promise<unknown> = Promise.resolve()
 const blobPrefix = 'portfolio-blog-posts/'
 
 function usesVercelBlob(): boolean {
-  return process.env.VERCEL === '1'
+  const hasReadWriteToken = Boolean(process.env.BLOB_READ_WRITE_TOKEN)
+  const hasVercelOidc = process.env.VERCEL === '1'
+    && Boolean(process.env.VERCEL_OIDC_TOKEN && process.env.BLOB_STORE_ID)
+
+  return hasReadWriteToken || hasVercelOidc
 }
 
 function getBlobOptions() {
