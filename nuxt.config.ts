@@ -13,7 +13,6 @@ export default defineNuxtConfig({
   runtimeConfig: {
     openRouterApiKey: process.env.NUXT_OPENROUTER_API_KEY || process.env.NUXT_OPEN_ROUTER_API_KEY || '',
     blogsStorageFile: process.env.NUXT_BLOGS_STORAGE_FILE || '',
-    blogGenerationCron: process.env.NUXT_BLOG_GENERATION_CRON || '0 9 * * *',
     public: {
       EMAILJS_SERVICE_ID: process.env.NUXT_EMAILJS_SERVICE_ID,
       EMAILJS_TEMPLATE_ID: process.env.NUXT_EMAILJS_TEMPLATE_ID,

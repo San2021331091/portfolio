@@ -1,5 +1,6 @@
 import { mkdir, readFile, rename, writeFile } from 'node:fs/promises'
 import { dirname, resolve } from 'node:path'
+import { get as getBlob, list as listBlobs, put as putBlob } from '@vercel/blob'
 import defaultBlogData from '../../public/blogs.json'
 import type { Blog } from '../../app/types/projects'
 
@@ -15,12 +16,23 @@ export interface NewPublishedBlog {
 }
 
 let writeQueue: Promise<unknown> = Promise.resolve()
+const blobPrefix = 'portfolio-blog-posts/'
+
+function usesVercelBlob(): boolean {
+  return process.env.VERCEL === '1'
+}
+
+function getBlobOptions() {
+  return process.env.BLOB_READ_WRITE_TOKEN
+    ? { token: process.env.BLOB_READ_WRITE_TOKEN }
+    : {}
+}
 
 function getStoragePath(storageFile: string): string {
   return resolve(process.cwd(), storageFile.trim() || '.data/blog-posts.json')
 }
 
-async function readStoredBlogs(storageFile: string): Promise<PublishedBlog[]> {
+async function readLocalBlogs(storageFile: string): Promise<PublishedBlog[]> {
   try {
     const contents = await readFile(getStoragePath(storageFile), 'utf8')
     const blogs: unknown = JSON.parse(contents)
@@ -30,6 +42,48 @@ async function readStoredBlogs(storageFile: string): Promise<PublishedBlog[]> {
     if ((error as NodeJS.ErrnoException).code === 'ENOENT') return []
     throw error
   }
+}
+
+async function readBlobBlog(pathname: string): Promise<PublishedBlog | undefined> {
+  const result = await getBlob(pathname, {
+    access: 'private',
+    useCache: false,
+    ...getBlobOptions(),
+  })
+  if (!result || result.statusCode !== 200 || !result.stream) return undefined
+  return JSON.parse(await new Response(result.stream).text()) as PublishedBlog
+}
+
+async function readVercelBlogs(): Promise<PublishedBlog[]> {
+  const blogs: PublishedBlog[] = []
+  let cursor: string | undefined
+
+  do {
+    const page = await listBlobs({
+      prefix: blobPrefix,
+      limit: 1000,
+      cursor,
+      ...getBlobOptions(),
+    })
+    const pageBlogs = await Promise.all(
+      page.blobs
+        .filter(blob => blob.pathname.endsWith('.json'))
+        .map(async (blob) => {
+          const post = await readBlobBlog(blob.pathname)
+          if (!post) throw new Error(`Could not read saved blog post: ${blob.pathname}`)
+          return post
+        }),
+    )
+    blogs.push(...pageBlogs)
+    cursor = page.hasMore ? page.cursor : undefined
+  } while (cursor)
+
+  return blogs.sort((first, second) => second.date.localeCompare(first.date))
+}
+
+async function readStoredBlogs(storageFile: string): Promise<PublishedBlog[]> {
+  if (usesVercelBlob()) return readVercelBlogs()
+  return readLocalBlogs(storageFile)
 }
 
 export async function getPublishedBlogs(storageFile: string): Promise<Blog[]> {
@@ -56,7 +110,8 @@ export async function getBlogList(storageFile: string): Promise<Blog[]> {
 }
 
 export async function getPublishedBlog(storageFile: string, slug: string): Promise<PublishedBlog | undefined> {
-  const blogs = await readStoredBlogs(storageFile)
+  if (usesVercelBlob()) return readBlobBlog(`${blobPrefix}${slug}.json`)
+  const blogs = await readLocalBlogs(storageFile)
   return blogs.find(blog => blog.slug === slug)
 }
 
@@ -87,10 +142,18 @@ export function publishBlog(storageFile: string, input: NewPublishedBlog): Promi
       hasArticle: true,
     }
 
-    await mkdir(dirname(path), { recursive: true })
-    const temporaryPath = `${path}.${process.pid}.tmp`
-    await writeFile(temporaryPath, JSON.stringify([post, ...blogs], null, 2), 'utf8')
-    await rename(temporaryPath, path)
+    if (usesVercelBlob()) {
+      await putBlob(`${blobPrefix}${post.slug}.json`, JSON.stringify(post), {
+        access: 'private',
+        contentType: 'application/json',
+        ...getBlobOptions(),
+      })
+    } else {
+      await mkdir(dirname(path), { recursive: true })
+      const temporaryPath = `${path}.${process.pid}.tmp`
+      await writeFile(temporaryPath, JSON.stringify([post, ...blogs], null, 2), 'utf8')
+      await rename(temporaryPath, path)
+    }
     return post
   }
 
