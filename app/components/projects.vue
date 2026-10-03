@@ -9,7 +9,7 @@
         <img
           :src="project?.image"
           :alt="project?.title"
-          class="project-image aspect-[16/10] w-full object-cover"
+          class="project-image h-full w-full object-cover"
         />
       </div>
 
