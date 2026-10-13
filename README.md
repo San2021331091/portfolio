@@ -77,13 +77,6 @@ Deploy with Vercel's **Nuxt** preset, `npm ci` as the install command, and `npm 
 
 ---
 
-## 🚀 Deployment
-
-This site can be deployed to Vercel as a Nuxt server-rendered application with private Blob storage for persistent generated posts.
-
-* 🔗 **Previous deployment**: [https://portfolio-qx6l.onrender.com](https://portfolio-qx6l.onrender.com)
-
----
 
 ## 💡 Project Purpose
 
